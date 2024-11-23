@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="banner">
+    <div class="logo">Library Connect</div>
+    <div class="auth-buttons">
+      <button onclick="location.href='login.html'">Login</button>
+      <button onclick="location.href='bookshelf.html'">My Bookshelf</button>
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search by keyword">
+    <select>
+      <option value="isbn">ISBN</option>
+      <option value="title">Title</option>
+      <option value="author">Author</option>
+      <option value="category">Category</option>
+    </select>
+    <button>Search</button>
+  </div>
+
+  <div class="results-grid">
+    <a class="result-card" href="book-details.html">
+      <div class="cover"></div>
+      <div class="title">Book Title</div>
+      <div class="author">Author Name</div>
+      <div class="year">2024</div>
+    </a>
+    <a class="result-card" href="book-details.html">
+      <div class="cover"></div>
+      <div class="title">Another Book</div>
+      <div class="author">Author Name</div>
+      <div class="year">2023</div>
+    </a>
+    <a class="result-card" href="book-details.html">
+      <div class="cover"></div>
+      <div class="title">Book Title</div>
+      <div class="author">Author Name</div>
+      <div class="year">2022</div>
+    </a>
+  </div>
+</body>
+</html>
