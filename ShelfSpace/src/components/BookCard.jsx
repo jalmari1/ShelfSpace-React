@@ -1,18 +1,18 @@
 import React from 'react'
-import { Link, Routes, Route } from "react-router-dom";
-import BookDetails from './BookDetails';
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
 const BookCard = () => {
+    const navigate = useNavigate();
     return (
         <>
-            <Link to="details">
-                <div className='result-card'>
-                    <div className='cover'></div>
-                    <div className='title'>Book Title</div>
-                    <div className="author">Author Name</div>
-                    <div className="year">2024</div>
-                </div>
-            </Link>
+            <div className='result-card' onClick={() => {
+                navigate("/details")
+            }}>
+                <div className='cover'></div>
+                <div className='title'>Book Title</div>
+                <div className="author">Author Name</div>
+                <div className="year">2024</div>
+            </div>
         </>
     );
 }
