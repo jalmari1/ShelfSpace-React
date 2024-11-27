@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
-const BookCard = () => {
+const BookCard = ({book}) => {
     const navigate = useNavigate();
     return (
         <>
@@ -9,9 +9,9 @@ const BookCard = () => {
                 navigate("/details")
             }}>
                 <div className='cover'></div>
-                <div className='title'>Book Title</div>
-                <div className="author">Author Name</div>
-                <div className="year">2024</div>
+                <div className='title'>{book.title}</div>
+                <div className="author">{book.author_name}</div>
+                <div className="year">{book.first_publish_year}</div>
             </div>
         </>
     );

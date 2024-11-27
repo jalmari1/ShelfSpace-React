@@ -38,7 +38,7 @@ function App() {
                       error={error}
                       setError={setError}
                     />
-                    <SearchResults />
+                    <SearchResults results={results}/>
                 </div>}
           />
         <Route path="/details" element={<div><SearchBar /> <BookDetails /> </div>} />

@@ -14,10 +14,9 @@ const SearchBar = ({searchCategory, setSearchCategory, searchValue, setSearchVal
 
     const handleSearch = async () => {        
         try{
-            const response = await axios.get(`http://localhost:3000/search/title?title=${searchValue}`);
+            const response = await axios.get(`http://localhost:3000/search/title?title=${encodeURIComponent(searchValue)}`);
     
-            setResults(response.data.results);
-            console.log(response);
+            setResults(response);
             setError(null);
         }catch(err) {
             setError(err.response?.data?.error || 'Something went wrong');
