@@ -3,6 +3,7 @@ import axios from "axios";
 import { MongoClient, ObjectId } from "mongodb";
 import "dotenv/config";
 console.log("MongoDB Server URL:", process.env.MONGO_DB_SERVER);
+import cors from "cors";
 
 // Connection URL
 const url = process.env.MONGO_DB_SERVER;
@@ -29,6 +30,9 @@ const app = express();
 const BASE_URL = "https://openlibrary.org/search.json";
 app.use(express.json());
 
+app.use(cors({
+    origin: 'http://localhost:5173',
+}));
 
 //*******************************
 // Routes and functions for API 

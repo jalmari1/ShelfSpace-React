@@ -8,7 +8,15 @@ import BookDetails from './components/BookDetails'
 import Login from './components/Login'
 import MyBookshelf from './components/MyBookshelf'
 
+
 function App() {
+  const [searchCategory, setSearchCategory] = useState("ISBN");
+  const [searchValue, setSearchValue] = useState("");
+  const [results, setResults] = useState([]);
+  const [error, setError] = useState(null); // State for error messages
+
+
+
   return (
     <Router>
       <div className='App'>
@@ -17,10 +25,25 @@ function App() {
         </nav>
       </div>
       <Routes>
-        <Route path="/" element={<div className="Search-container"><SearchBar /><SearchResults /></div>}/>
-        <Route path="/details" element={<BookDetails />} />
-        <Route path="/login" element={<Login />}/>
-        <Route path="/bookshelf" element={<MyBookshelf />}/>
+        <Route path="/" 
+               element= {
+                <div className="Search-container">
+                    <SearchBar
+                      searchValue={searchValue} 
+                      setSearchValue={setSearchValue}
+                      searchCategory={searchCategory} 
+                      setSearchCategory={setSearchCategory} 
+                      results={results}
+                      setResults={setResults}
+                      error={error}
+                      setError={setError}
+                    />
+                    <SearchResults />
+                </div>}
+          />
+        <Route path="/details" element={<div><SearchBar /> <BookDetails /> </div>} />
+        <Route path="/login" element={<div><SearchBar /><Login /> </div>}/>
+        <Route path="/bookshelf" element={<div><SearchBar /><MyBookshelf /> </div>}/>
       </Routes>
     </Router>
   )
