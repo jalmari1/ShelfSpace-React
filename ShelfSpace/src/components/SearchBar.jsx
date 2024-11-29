@@ -14,7 +14,7 @@ const SearchBar = ({searchCategory, setSearchCategory, searchValue, setSearchVal
 
     const handleSearch = async () => {        
         try{
-            const response = await axios.get(`https://shelfspace-node.onrender.com/search/title?title=${encodeURIComponent(searchValue)}`);
+            const response = await axios.get(`${import.meta.env.VITE_BE_URL}/search/title?title=${encodeURIComponent(searchValue)}`);
     
             setResults(response);
             setError(null);
