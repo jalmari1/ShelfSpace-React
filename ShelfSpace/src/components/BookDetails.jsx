@@ -5,16 +5,16 @@ const BookDetails = () => {
     return (
         <div>
             {/* Banner */}
-            <div className="banner">
+            {/* <div className="banner">
                 <div className="logo">Library Connect</div>
                 <div>
                     <button className="signup-btn">Sign up</button>
                     <button className="login-btn">Login / My profile</button>
                 </div>
-            </div>
+            </div> */}
 
             {/* Search Bar */}
-            <div className="search-bar">
+            {/* <div className="search-bar">
                 <div className="search-container">
                     <label>Search by</label>
                     <select>
@@ -26,7 +26,7 @@ const BookDetails = () => {
                     <input type="text" placeholder="Keyword" />
                     <button className="search-btn">Search</button>
                 </div>
-            </div>
+            </div> */}
 
             {/* Book Details Section */}
             <div className="details-container">
