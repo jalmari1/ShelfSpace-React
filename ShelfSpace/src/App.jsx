@@ -14,9 +14,6 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null); // State for error messages
-
-
-
   return (
     <Router>
       <div className='App'>
@@ -38,7 +35,7 @@ function App() {
                       error={error}
                       setError={setError}
                     />
-                    <SearchResults results={results}/>
+                    <SearchResults results={results} />
                 </div>}
           />
         <Route path="/details" element={<div><SearchBar /> <BookDetails /> </div>} />

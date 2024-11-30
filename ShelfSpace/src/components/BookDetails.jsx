@@ -1,33 +1,17 @@
 import React from 'react';
-import './BookDetails.css'; 
+import './BookDetails.css';
+import { useLocation } from "react-router-dom";
 
 const BookDetails = () => {
+    const location = useLocation();
+    const bookInformation = location.state?.book; // Get book details from location state
+    console.log(bookInformation);
+    if (!bookInformation) {
+        return <div>No book details available!</div>;
+    }
+
     return (
         <div>
-            {/* Banner */}
-            {/* <div className="banner">
-                <div className="logo">Library Connect</div>
-                <div>
-                    <button className="signup-btn">Sign up</button>
-                    <button className="login-btn">Login / My profile</button>
-                </div>
-            </div> */}
-
-            {/* Search Bar */}
-            {/* <div className="search-bar">
-                <div className="search-container">
-                    <label>Search by</label>
-                    <select>
-                        <option value="isbn">ISBN</option>
-                        <option value="title">Title</option>
-                        <option value="author">Author</option>
-                        <option value="category">Category</option>
-                    </select>
-                    <input type="text" placeholder="Keyword" />
-                    <button className="search-btn">Search</button>
-                </div>
-            </div> */}
-
             {/* Book Details Section */}
             <div className="details-container">
                 {/* Book Cover */}
@@ -35,10 +19,10 @@ const BookDetails = () => {
 
                 {/* Book Info */}
                 <div className="book-info">
-                    <h2>Book Title</h2>
-                    <p><strong>Author:</strong> Author Name</p>
-                    <p><strong>Year:</strong> 2024</p>
-                    <p><strong>ISBN:</strong> 123-456-789</p>
+                    <h2>{bookInformation.title}</h2>
+                    <p><strong>Author:</strong> {bookInformation.author_name}</p>
+                    <p><strong>Year:</strong> {bookInformation.first_publish_year}</p>
+                    <p><strong>ISBN:</strong> {bookInformation.isbn}</p>
                     <p><strong>Category:</strong> Fiction</p>
                     <p><strong>Rating:</strong> ★★★★☆ <small>(11 ratings)</small></p>
                     <button className="add-bookshelf-btn">Add to Bookshelf</button>

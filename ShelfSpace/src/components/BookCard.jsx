@@ -3,10 +3,11 @@ import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
 const BookCard = ({book}) => {
     const navigate = useNavigate();
+
     return (
         <>
             <div className='result-card' onClick={() => {
-                navigate("/details")
+                navigate("/details", {state: {book}});
             }}>
                 <div className='cover'></div>
                 <div className='title'>{book.title}</div>

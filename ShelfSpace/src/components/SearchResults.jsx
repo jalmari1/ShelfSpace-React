@@ -1,7 +1,8 @@
-import {React, useEffect} from 'react'
+import {React, useState} from 'react'
 import BookCard from './BookCard'
 
 const SearchResults = ({results}) => {
+    const [bookInformation, setBookInformation] = useState("");
     if (!results || !results.data || results.data.length === 0) {
         return <div>Loading...</div>; // or any other loading indicator/message
       }
