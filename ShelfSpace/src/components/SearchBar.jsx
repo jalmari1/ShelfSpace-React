@@ -2,20 +2,32 @@ import {React, useState, useEffect} from 'react';
 import axios from 'axios';
 
 const SearchBar = ({searchCategory, setSearchCategory, searchValue, setSearchValue, results, setResults, error, setError}) => {
+    let requestURL;
 
     const handleChange = (event) => {
         setSearchValue(event.target.value)
     }
 
-    const handleCategoryChange = () => {
+    const handleCategoryChange = (event) => {
         setSearchCategory(event.target.value);
 
       }
 
-    const handleSearch = async () => {        
+    const handleSearch = async () => {
+        let searchQuery = encodeURIComponent(searchValue);
+        switch(searchCategory){
+            case "title":
+                requestURL=`/search/title?title=${searchQuery}`;
+                break;
+            case "isbn":
+                requestURL=`/search/isbn/${searchQuery}`;
+                break;
+            case "author":
+                requestURL=`/search/author?author=${searchQuery}`;
+        }
+
         try{
-            const response = await axios.get(`${import.meta.env.VITE_BE_URL}/search/title?title=${encodeURIComponent(searchValue)}`);
-    
+            const response = await axios.get(`${import.meta.env.VITE_BE_URL + requestURL}`);
             setResults(response);
             setError(null);
         }catch(err) {

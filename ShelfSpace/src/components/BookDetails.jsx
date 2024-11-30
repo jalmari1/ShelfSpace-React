@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 const BookDetails = () => {
     const location = useLocation();
     const bookInformation = location.state?.book; // Get book details from location state
-    console.log(bookInformation);
+    // console.log(bookInformation);
     if (!bookInformation) {
         return <div>No book details available!</div>;
     }
