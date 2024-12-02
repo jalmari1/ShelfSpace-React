@@ -1,11 +1,13 @@
 import {React, useState, useEffect} from 'react';
 import axios from 'axios';
 import BookCard from './BookCard';
+import CreateBookshelfModal from './Modal/CreateBookshelfModal';
 
 const MyBookshelf = () => {
     const [bookshelves, setBookshelves] = useState();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isOpen, setIsOpen] = useState(false)
 
     let user = "user1";
     const getAllBookshelvesUrl = `/bookshelf/getallbooks?username=${user}`;
@@ -50,7 +52,9 @@ const MyBookshelf = () => {
 
     return (
         <>
-            {/* <button onClick={createBookshelf}>Create Bookshelf</button> */}
+            <button onClick={() => setIsOpen(true)}>Create Bookshelf</button>
+            <CreateBookshelfModal open={isOpen} onClose={() => setIsOpen(false)}>
+            </CreateBookshelfModal>
 
             <div className="bookshelf-section">
                 {bookshelves.length === 0 ? (
