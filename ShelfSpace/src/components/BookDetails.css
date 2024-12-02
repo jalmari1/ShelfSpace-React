@@ -24,6 +24,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 25px solid #f9e1a9; /* Add border around the image */
+    margin-top: 20px; /* Space between heading and image */
 }
 
 .book-image {
@@ -35,10 +37,10 @@
 
 /* Right Column: Book Details */
 .book-info {
-    flex: 0 0 65%; /* Fixed width for the right column */
+    flex: 0 0 60%; /* Fixed width for the right column */
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Reduce spacing between elements */
+    gap: 5px; /* Reduce spacing between elements */
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -72,6 +74,14 @@
 
 .add-bookshelf-btn:hover {
     background-color: #005f99;
+}
+
+/* Add Book Details Heading */
+.book-details-heading {
+    font-size: 1.2em; /* Smaller font size */
+    font-weight: bold;
+    color: #007acc;
+    margin-bottom: 10px; /* Space between heading and content */
 }
 
 /* Summary and Reviews */
@@ -140,4 +150,8 @@
     .summary-reviews {
         margin-top: 10px;
     }
+}
+.text{
+    padding-left:5%;
+    margin-bottom: 0%;
 }

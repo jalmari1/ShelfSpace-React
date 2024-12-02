@@ -11,9 +11,14 @@ const BookDetails = () => {
     }
 
     return (
+        <>
+        
+        <h2 className="text">Book details:</h2>
         <div className="details-container">
+           
             {/* Left Column: Book Cover */}
             <div className="book-cover">
+            
                 <img
                     src="https://ia903200.us.archive.org/view_archive.php?archive=/23/items/m_covers_0009/m_covers_0009_13.zip&file=0009139229-M.jpg"
                     alt="Book Cover"
@@ -50,6 +55,8 @@ const BookDetails = () => {
                 </div>
             </div>
         </div>
+        </>
+
     );
 };
 
