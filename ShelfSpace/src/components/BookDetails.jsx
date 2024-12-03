@@ -33,7 +33,7 @@ const BookDetails = () => {
     },[bookInformation]);
 
     if (!bookInformation) {
-        return <div>No book details available!</div>;
+        return <div>No book details available.</div>;
     }
 
     return (

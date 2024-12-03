@@ -13,7 +13,7 @@ const BookCard = ({book}) => {
             }}>
                 <div className='cover'><img src={imgUrl} alt={book.title} /></div>
                 <div className='title'>{book.title}</div>
-                <div className="author">{book.author_name}</div>
+                <div className="author">{book.author_name[0]}</div>
                 <div className="year">{book.first_publish_year}</div>
             </div>
         </>

@@ -35,12 +35,62 @@ function App() {
                       error={error}
                       setError={setError}
                     />
-                    <SearchResults results={results} />
                 </div>}
           />
-        <Route path="/details" element={<div><SearchBar /> <BookDetails /> </div>} />
-        <Route path="/login" element={<div><SearchBar /><Login /> </div>}/>
-        <Route path="/bookshelf" element={<div><SearchBar /><MyBookshelf /> </div>}/>
+        <Route
+          path="/results"
+          element= {<div className="Search-container">
+            <SearchBar
+              searchValue={searchValue} 
+              setSearchValue={setSearchValue}
+              searchCategory={searchCategory} 
+              setSearchCategory={setSearchCategory} 
+              results={results}
+              setResults={setResults}
+              error={error}
+              setError={setError}
+            />
+            <SearchResults results={results} />
+            </div>} />
+        <Route
+          path="/details"
+          element={<div>
+            <SearchBar 
+              searchValue={searchValue} 
+              setSearchValue={setSearchValue}
+              searchCategory={searchCategory} 
+              setSearchCategory={setSearchCategory} 
+              results={results}
+              setResults={setResults}
+              error={error}
+              setError={setError}/> 
+            <BookDetails /> </div>} />
+        <Route
+          path="/login"
+          element={<div>
+            <SearchBar 
+              searchValue={searchValue} 
+              setSearchValue={setSearchValue}
+              searchCategory={searchCategory} 
+              setSearchCategory={setSearchCategory} 
+              results={results}
+              setResults={setResults}
+              error={error}
+              setError={setError}/> 
+            <Login /> </div>}/>
+        <Route 
+          path="/bookshelf" 
+          element={<div>
+            <SearchBar 
+              searchValue={searchValue} 
+              setSearchValue={setSearchValue}
+              searchCategory={searchCategory} 
+              setSearchCategory={setSearchCategory} 
+              results={results}
+              setResults={setResults}
+              error={error}
+              setError={setError}/> 
+          <MyBookshelf /> </div>}/>
       </Routes>
     </Router>
   )
