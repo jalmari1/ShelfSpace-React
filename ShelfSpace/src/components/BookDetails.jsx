@@ -1,10 +1,36 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import './BookDetails.css';
 import { useLocation } from "react-router-dom";
+import axios from 'axios'
 
 const BookDetails = () => {
     const location = useLocation();
     const bookInformation = location.state?.book; // Get book details from location state
+
+    const [summary, setSummary] = useState("Loading summary...");
+
+    const imgUrl = `https://covers.openlibrary.org/b/olid/${bookInformation.cover_edition_key}-M.jpg`;
+
+    const getBookSummary = async () => {
+        if (!bookInformation?.key) {
+            setSummary("No summary available.");
+            return;
+        }
+        const getBookSummaryUrl = `http://openlibrary.org${bookInformation.key}.json`;
+        try{
+            const response = await axios.get(getBookSummaryUrl);
+            const summary = response.data.description?.value || response.data.description || "No summary available.";
+            setSummary(summary);
+        }catch(err){
+            console.log('Error fetching book summary:',err);
+            setSummary("Failed to load summary. Please try again later.");
+        }
+    }
+
+    useEffect(() => {
+        getBookSummary();
+        console.log(summary);
+    },[bookInformation]);
 
     if (!bookInformation) {
         return <div>No book details available!</div>;
@@ -20,7 +46,7 @@ const BookDetails = () => {
             <div className="book-cover">
             
                 <img
-                    src="https://ia903200.us.archive.org/view_archive.php?archive=/23/items/m_covers_0009/m_covers_0009_13.zip&file=0009139229-M.jpg"
+                    src={imgUrl}
                     alt="Book Cover"
                     className="book-image"
                 />
@@ -42,7 +68,7 @@ const BookDetails = () => {
                     <div className="summary-section">
                         <h3>Summary</h3>
                         <p>
-                            This is a brief summary of the book content. It highlights the main plot and themes of the book.
+                            {summary}
                         </p>
                     </div>
 
