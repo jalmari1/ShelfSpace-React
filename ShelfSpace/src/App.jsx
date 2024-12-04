@@ -10,7 +10,7 @@ import MyBookshelf from './components/MyBookshelf'
 
 
 function App() {
-  const [searchCategory, setSearchCategory] = useState("ISBN");
+  const [searchCategory, setSearchCategory] = useState("isbn");
   const [searchValue, setSearchValue] = useState("");
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null); // State for error messages
@@ -90,7 +90,7 @@ function App() {
               setResults={setResults}
               error={error}
               setError={setError}/> 
-          <MyBookshelf /> </div>}/>
+          <MyBookshelf results={results} setResults={setResults}/> </div>}/>
       </Routes>
     </Router>
   )

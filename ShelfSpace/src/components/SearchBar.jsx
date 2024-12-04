@@ -36,6 +36,7 @@ const SearchBar = ({searchCategory, setSearchCategory, searchValue, setSearchVal
             setError(err.response?.data?.error || 'Something went wrong');
             console.error(err);
         }
+        console.log(results);
         navigate("/results");
     }
 
