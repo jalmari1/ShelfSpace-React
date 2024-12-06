@@ -4,7 +4,7 @@ import { Link, Routes, Route, useNavigate } from "react-router-dom";
 const BookCard = ({book}) => {
     const navigate = useNavigate();
     const imgUrl = book.cover_edition_key
-    ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-S.jpg`
+    ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`
     : "path/to/default-image.jpg";
     return (
         <>

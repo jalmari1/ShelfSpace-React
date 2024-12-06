@@ -94,7 +94,7 @@ body {
   padding: 15px;
   border-radius: 10px;
   text-align: center;
-  width: 150px;
+  width: 200px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -108,10 +108,12 @@ body {
 }
 
 .result-card .cover {
-  background-color: #007acc;
-  height: 100px;
+  display: flex;
+  align-items: center;
+  height: 300px;
   margin-bottom: 10px;
   border-radius: 5px;
+  justify-content: center;
 }
 
 .result-card .title {
