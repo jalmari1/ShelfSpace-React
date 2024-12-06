@@ -5,7 +5,7 @@ const BookCard = ({book}) => {
     const navigate = useNavigate();
     const imgUrl = book.cover_edition_key
     ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`
-    : "path/to/default-image.jpg";
+    : "../../default book cover image.jpg";
     return (
         <>
             <div className='result-card' onClick={() => {
