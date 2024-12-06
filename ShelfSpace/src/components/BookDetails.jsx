@@ -2,12 +2,17 @@ import {React, useEffect, useState} from 'react';
 import './BookDetails.css';
 import { useLocation } from "react-router-dom";
 import axios from 'axios'
+import AddToBookshelfModal from './Modal/AddToBookshelfModal';
 
 const BookDetails = () => {
+    const [summary, setSummary] = useState("Loading summary...");
+    const [isOpen, setIsOpen] = useState(false);
+
     const location = useLocation();
     const bookInformation = location.state?.book; // Get book details from location state
 
-    const [summary, setSummary] = useState("Loading summary...");
+
+
 
     const imgUrl = `https://covers.openlibrary.org/b/olid/${bookInformation.cover_edition_key}-M.jpg`;
 
@@ -29,7 +34,6 @@ const BookDetails = () => {
 
     useEffect(() => {
         getBookSummary();
-        console.log(summary);
     },[bookInformation]);
 
     if (!bookInformation) {
@@ -60,7 +64,7 @@ const BookDetails = () => {
                 <p><strong>ISBN:</strong> {bookInformation.isbn?.[0] || "N/A"}</p>
                 <p><strong>Category:</strong> Fiction</p>
                 <p><strong>Rating:</strong> ★★★★☆ <small>(11 ratings)</small></p>
-                <button className="add-bookshelf-btn">Add to Bookshelf</button>
+                <button onClick={() => setIsOpen(true)} className="add-bookshelf-btn">Add to Bookshelf</button>
 
                 {/* Summary and Reviews Section */}
                 <div className="summary-reviews">
@@ -81,6 +85,12 @@ const BookDetails = () => {
                 </div>
             </div>
         </div>
+                {/* Add to Bookshelf Modal */}
+                <AddToBookshelfModal
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                bookDetails = {bookInformation}
+            />
         </>
 
     );

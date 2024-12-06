@@ -2,8 +2,6 @@ import React from 'react'
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
 const BookCard = ({book}) => {
-    console.log("Here's the object sent to BookCard:");
-    console.log(book);
     const navigate = useNavigate();
     const imgUrl = book.cover_edition_key
     ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-S.jpg`

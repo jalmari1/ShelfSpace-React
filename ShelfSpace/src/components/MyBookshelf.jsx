@@ -6,11 +6,12 @@ import CreateBookshelfModal from './Modal/CreateBookshelfModal';
 const MyBookshelf = () => {
     const [bookshelves, setBookshelves] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingBooks, setLoadingBooks] = useState(false);
     const [error, setError] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [bookResults, setBookResults] = useState({});
 
-    let user = "user2";
+    let user = "user1";
     const getAllBookshelvesUrl = `/bookshelf/getallbooks?username=${user}`;
     let searchQuery = `${import.meta.env.VITE_BE_URL + getAllBookshelvesUrl}`;
     
@@ -42,6 +43,7 @@ const MyBookshelf = () => {
     };
 
     const handleFetchBooks = async () => {
+        setLoadingBooks(true);
         const updatedBookResults  = {};
         for (const shelf of bookshelves.bookshelf || []) {
             const books  = [];
@@ -55,6 +57,7 @@ const MyBookshelf = () => {
             updatedBookResults[shelf.bookshelfName] = books;
         }
         setBookResults(updatedBookResults);
+        setLoadingBooks(false);
     };
 
     useEffect(() => {
@@ -65,6 +68,7 @@ const MyBookshelf = () => {
         handleFetchBooks();
     },[bookshelves])
     if (loading) return <p>Loading...</p>;
+    if (loadingBooks) return <p>Loading books...</p>;
     if (error) return <p>{error}</p>;
 
     return (
