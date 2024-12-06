@@ -12,7 +12,8 @@ const Header = () => {
             {location.pathname === '/' ? (
               <>
                 <button onClick={() => {navigate("/login")}}>Login</button>
-                <button onClick={() => {navigate("/bookshelf")}}>My Bookshelf</button>
+                
+                <button onClick={() => {navigate("/SignUp")}}>Sign Up</button>
               </>
             ) : (
               <>
