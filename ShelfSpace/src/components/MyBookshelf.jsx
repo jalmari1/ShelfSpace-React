@@ -64,8 +64,10 @@ const MyBookshelf = () => {
                 }
             };
             updatedBookResults[shelf.bookshelfName] = books;
+            // console.log(books);
         }
         setBookResults(updatedBookResults);
+        console.log(updatedBookResults);
         setLoadingBooks(false);
     };
 

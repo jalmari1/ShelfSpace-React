@@ -2,8 +2,9 @@ import React from 'react'
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
 const BookCard = ({book}) => {
+    // console.log(book);
     const navigate = useNavigate();
-    const imgUrl = book.cover_edition_key
+    const imgUrl = book?.cover_edition_key && book.cover_edition_key.trim()
     ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`
     : "../../default book cover image.jpg";
     return (
