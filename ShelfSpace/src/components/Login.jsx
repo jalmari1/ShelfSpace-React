@@ -10,8 +10,10 @@ const Login = () => {
     e.preventDefault(); // Prevent form submission from reloading the page
     setError(''); // Clear any previous errors
 
+    let requestURL='/login';
+
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BE_URL}/login`, { username, password }); // Replace with your backend URL
+      const response = await axios.post(`${import.meta.env.VITE_BE_URL + requestURL}`, { username, password }); // Replace with your backend URL
       const token = response.data.token;
 
       if (token) {
