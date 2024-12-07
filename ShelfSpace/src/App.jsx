@@ -10,6 +10,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp'; // Import SignUp Component
 import MyBookshelf from './components/MyBookshelf';
 import BookCard from './components/BookCard';
+import Banner from './components/Banner'
 
 function App() {
   const [searchCategory, setSearchCategory] = useState("isbn");
@@ -92,6 +93,10 @@ function App() {
                 error={error}
                 setError={setError}
               />
+            <div className='banner'>
+              <Banner />
+            </div>
+
               <div className="results-grid">
                 {Object.keys(bestSellingBooks).map((firstIsbn) => {
                   const books = bestSellingBooks[firstIsbn];
