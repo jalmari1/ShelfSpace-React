@@ -11,7 +11,7 @@ const Login = () => {
     setError(''); // Clear any previous errors
 
     try {
-      const response = await axios.post('http://localhost:3000/login', { username, password }); // Replace with your backend URL
+      const response = await axios.post(`${import.meta.env.VITE_BE_URL}/login`, { username, password }); // Replace with your backend URL
       const token = response.data.token;
 
       if (token) {
