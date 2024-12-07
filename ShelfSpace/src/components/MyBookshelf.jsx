@@ -11,13 +11,22 @@ const MyBookshelf = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [bookResults, setBookResults] = useState({});
 
-    let user = "user1";
-    const getAllBookshelvesUrl = `/bookshelf/getallbooks?username=${user}`;
+    const token = localStorage.getItem('authToken'); // Retrieve token from storage
+    if (!token) {
+        alert('Please log in first');
+        window.location.href = '/login'; // Redirect to login page
+        return;
+    }
+    const getAllBookshelvesUrl = `/bookshelf/getallbooks`;
     let searchQuery = `${import.meta.env.VITE_BE_URL + getAllBookshelvesUrl}`;
-    
+   
     const fetchBookshelves = async () => {
         try{
-            const response = await axios.get(searchQuery);
+            const response = await axios.get(searchQuery, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Attach the token
+                },
+            });
             if (response.data.error) {
                 setError(response.data.error);
             } else {
