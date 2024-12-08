@@ -1,20 +1,31 @@
 import {React, useEffect, useState} from 'react'
 import styles from './style.module.css'
 import axios from 'axios'
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function AddToBookshelfModal({open, onClose, bookDetails }) {
   const [bookshelves, setBookshelves] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Handles errors
   const [selectedShelves, setSelectedShelves] = useState([]);
+  const navigate = useNavigate();
 
-  const user = 'user1';
+  const token = localStorage.getItem('authToken'); // Retrieve token from storage
+  if (!token) {
+      navigate("/login");
+      return;
+  }
   useEffect(() => {
     const fetchBookshelfData = async () => {
-    const getAllBookshelvesUrl = `/bookshelf/getallbooks?username=${user}`;
+ //   const getAllBookshelvesUrl = `/bookshelf/getallbooks?username=${user}`;
+    const getAllBookshelvesUrl = `/bookshelf/getallbooks`;
     let searchQuery = `${import.meta.env.VITE_BE_URL + getAllBookshelvesUrl}`; 
       try {
-        const response = await axios.get(searchQuery); // Replace with your API endpoint
+        const response = await axios.get(searchQuery, {
+          headers: {
+              Authorization: `Bearer ${token}`, // Attach the token
+          },
+      }); // Replace with your API endpoint
         const bookshelfNames = response.data.bookshelf.map(shelf => shelf.bookshelfName);
         setBookshelves(bookshelfNames);
       } catch (error) {
@@ -38,12 +49,19 @@ export default function AddToBookshelfModal({open, onClose, bookDetails }) {
 
 
   const handleAddBookToBookshelf = async () => {
-    const user = "user1"; // Replace with dynamic username if needed
+    //const user = "user1"; // Replace with dynamic username if needed
+    const token = localStorage.getItem('authToken'); // Retrieve token from storage
+  
+ 
+    if (!token) {
+        navigate("/login");
+        return;
+    }
     const apiUrl = `${import.meta.env.VITE_BE_URL}/bookshelf/addbook`; // Replace with your actual API endpoint
     const data = selectedShelves.map((shelfname) => (
       {
-          username: user,
-          shelfname,
+//          username: user,
+          shelfname: shelfname,
           book: {
               title: bookDetails.title,
               author: bookDetails.author_name || "Unknown",
@@ -56,7 +74,11 @@ export default function AddToBookshelfModal({open, onClose, bookDetails }) {
 
     for (const payload of data){
       try{
-        const response = await axios.post(apiUrl,payload);
+        const response = await axios.post(apiUrl,payload, {
+          headers: {
+              Authorization: `Bearer ${token}`, // Attach the token
+          },
+      });
         if (response.status !== 200){
           allSuccessful = false;
         }
