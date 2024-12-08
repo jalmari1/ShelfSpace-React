@@ -25,7 +25,7 @@ const Login = () => {
         alert('Login successful!');
         // Redirect user or update app state
         navigate("/bookshelf");
-        window.location.href = '/bookshelf'; // Example: redirect to dashboard
+        //window.location.href = '/bookshelf'; // Example: redirect to dashboard
       }
     } catch (err) {
       console.error(err);
