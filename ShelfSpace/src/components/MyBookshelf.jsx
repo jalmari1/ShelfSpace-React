@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react';
 import axios, { all } from 'axios';
 import BookCard from './BookCard';
 import CreateBookshelfModal from './Modal/CreateBookshelfModal';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const MyBookshelf = () => {
     const [bookshelves, setBookshelves] = useState([]);
@@ -10,11 +11,14 @@ const MyBookshelf = () => {
     const [error, setError] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [bookResults, setBookResults] = useState({});
-
+    const navigate = useNavigate();
+    const location = useLocation();
+  
     const token = localStorage.getItem('authToken'); // Retrieve token from storage
     if (!token) {
-        alert('Please log in first');
-        window.location.href = '/login'; // Redirect to login page
+     //   alert('Please log in first');
+        navigate("/login");
+        //window.location.href = '/login'; // Redirect to login page
         return;
     }
     const getAllBookshelvesUrl = `/bookshelf/getallbooks`;

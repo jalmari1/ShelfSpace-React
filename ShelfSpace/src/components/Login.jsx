@@ -1,10 +1,14 @@
 import axios from 'axios';
 import {React, useState, useEffect} from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent form submission from reloading the page
@@ -20,6 +24,7 @@ const Login = () => {
         localStorage.setItem('authToken', token); // Store token in localStorage
         alert('Login successful!');
         // Redirect user or update app state
+        navigate("/bookshelf");
         window.location.href = '/bookshelf'; // Example: redirect to dashboard
       }
     } catch (err) {
