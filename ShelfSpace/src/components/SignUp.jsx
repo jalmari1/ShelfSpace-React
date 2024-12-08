@@ -23,7 +23,7 @@ const SignUp = () => {
     e.preventDefault(); // Prevent page reload
 
     try {
-      const response = await axios.post("http://localhost:5000/register", formData);
+      const response = await axios.post("http://localhost:3000/register", formData);
       setMessage(response.data.message); // Display success message
     } catch (error) {
       const errorMsg =
