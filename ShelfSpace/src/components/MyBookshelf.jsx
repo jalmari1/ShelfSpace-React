@@ -75,6 +75,14 @@ const MyBookshelf = () => {
         setLoadingBooks(false);
     };
 
+
+    const handleRemoveBook = async (isbn, shelfName) => {
+        await fetchBookshelves(); // Refetch updated bookshelves
+        await handleFetchBooks(); // Refetch updated books
+        alert(`The book has been successfully removed.`);
+
+    };
+
     useEffect(() => {
         fetchBookshelves();
     },[isOpen]);
@@ -106,7 +114,10 @@ const MyBookshelf = () => {
                                 ) : 
                                 (
                                     bookResults[shelf.bookshelfName]?.map((result,index) => {
-                                        return <BookCard key={index} book={result[0]} />
+                                        return <BookCard key={index} book={result[0]} source={{shelfName: shelf.bookshelfName }}
+                                        onRemove={(isbn) => handleRemoveBook(isbn, shelf.bookshelfName)} // Pass callback
+
+                                        />
 })
                                 )} 
                         </div>
