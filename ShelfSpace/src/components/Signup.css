@@ -1,0 +1,77 @@
+/* SignUp.css */
+
+  
+  .book-details {
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .book-details h2 {
+    text-align: center;
+    color: #9aa728;
+    font-size: 26px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  .book-details form {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    height: 100%;
+  }
+  
+  .book-details input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .book-details input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+  }
+  
+  .book-details button {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #28a745, #85d49b);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .book-details button:hover {
+    background: linear-gradient(90deg, #85d49b, #28a745);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+  }
+  
+  .book-details p {
+    text-align: center;
+    color: red;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

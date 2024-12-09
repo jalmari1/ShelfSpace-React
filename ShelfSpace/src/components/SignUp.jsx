@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Signup.css';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -81,6 +82,8 @@ const SignUp = () => {
           required
         />
         <br />
+        <p style={{ fontSize: "14  px", marginTop: "10px" }}>Already Registered? <b>Login</b> instead
+          </p>
         <button type="submit">Sign Up</button>
       </form>
       {message && <p>{message}</p>} {/* Display feedback */}

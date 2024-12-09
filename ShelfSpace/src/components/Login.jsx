@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { React, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import './Login.css';
+
 
 const Login = ({ setIsLoggedIn }) => { // Accept setIsLoggedIn as a prop
   const [username, setUsername] = useState('');
@@ -57,6 +59,9 @@ const Login = ({ setIsLoggedIn }) => { // Accept setIsLoggedIn as a prop
             required
           />
           <br />
+         <p style={{ fontSize: "14  px", marginTop: "10px" }}>Dont have an account? <b>SignUp</b> instead
+          </p>
+         
           <button type="submit">Login</button>
         </form>
       </div>
