@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
+import './Header.css';
 
 const Header = ({ isLoggedIn, onLogout }) => {
   const navigate = useNavigate();
