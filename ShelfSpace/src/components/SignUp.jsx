@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import './Signup.css';
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +14,7 @@ const SignUp = () => {
   });
 
   const [message, setMessage] = useState(""); // To display success or error messages
+  const navigate = useNavigate();
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -82,8 +85,8 @@ const SignUp = () => {
           required
         />
         <br />
-        <p style={{ fontSize: "14  px", marginTop: "10px" }}>Already Registered? <b>Login</b> instead
-          </p>
+        <p style={{ fontSize: "14 px", marginTop: "10px" }}>Already Registered? <b> <a onClick={() => navigate("/Login")}>Login </a></b> instead
+        </p>
         <button type="submit">Sign Up</button>
       </form>
       {message && <p>{message}</p>} {/* Display feedback */}

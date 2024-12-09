@@ -22,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => { // Accept setIsLoggedIn as a prop
 
       if (token) {
         localStorage.setItem('authToken', token); // Store token in localStorage
-        alert('Login successful!');
+        alert('Login successful! Welcome Back!');
         
         // Update the login state in App.jsx
         setIsLoggedIn(true);
@@ -59,7 +59,7 @@ const Login = ({ setIsLoggedIn }) => { // Accept setIsLoggedIn as a prop
             required
           />
           <br />
-         <p style={{ fontSize: "14  px", marginTop: "10px" }}>Dont have an account? <b>SignUp</b> instead
+         <p style={{ fontSize: "14  px", marginTop: "10px" }}>Dont have an account? <b><a onClick={() => navigate("/SignUp")}>SignUp</a></b> instead
           </p>
          
           <button type="submit">Login</button>

@@ -74,4 +74,17 @@
       transform: scale(1);
     }
   }
+  /* Style for the "Login" link */
+.book-details p a {
+    color: #007BFF; /* Set the default link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  /* Hover effect for the "Login" link */
+  .book-details p a:hover {
+    color: #6c63ff; /* Change to a lighter shade of blue on hover */
+    text-decoration: underline; /* Add underline on hover */
+  }
   
