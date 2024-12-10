@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import axios, { all } from 'axios';
 import BookCard from './BookCard';
+import Loader from './Loader'
 import CreateBookshelfModal from './Modal/CreateBookshelfModal';
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -90,8 +91,8 @@ const MyBookshelf = () => {
     useEffect(() => {
         handleFetchBooks();
     },[bookshelves])
-    if (loading) return <p>Loading...</p>;
-    if (loadingBooks) return <p>Loading books...</p>;
+    if (loading) return <Loader />;
+    if (loadingBooks) return < Loader/>;
     if (error) return <p>{error}</p>;
 
     return (
@@ -99,30 +100,37 @@ const MyBookshelf = () => {
             <button onClick={() => setIsOpen(true)}>Create Bookshelf</button>
             <CreateBookshelfModal open={isOpen} onClose={() => setIsOpen(false)} onBookshelfCreated={fetchBookshelves} />
 
-            <div className="bookshelf-section">
-                {bookshelves.length === 0 ? (
-                   <p>No bookshelves found. Add one to get started!</p>
-                   ) : 
-                   (
-                    bookshelves.bookshelf.map((shelf, index) => (
-                        <div key={index}>
-                            {/* Bookshelf Name */}
-                            <h2>{shelf.bookshelfName}</h2>
-                            <div className="results-grid">
-                                {bookResults[shelf.bookshelfName]?.length === 0 ? (
-                                    <p>No books found on this bookshelf.</p>
-                                ) : 
-                                (
-                                    bookResults[shelf.bookshelfName]?.map((result,index) => {
-                                        return <BookCard key={index} book={result[0]} source={{shelfName: shelf.bookshelfName }}
-                                        onRemove={(isbn) => handleRemoveBook(isbn, shelf.bookshelfName)} // Pass callback
-
-                                        />
-})
-                                )} 
-                        </div>
-                    </div>)))}
-            </div>
+            {loading ? (
+                <div className='loading-screen'>
+                    <Loader />
+                </div>
+                ): (
+                    <div className="bookshelf-section">
+                    {bookshelves.length === 0 ? (
+                    <p>No bookshelves found. Add one to get started!</p>
+                    ) : 
+                    (
+                        bookshelves.bookshelf.map((shelf, index) => (
+                            <div key={index}>
+                                {/* Bookshelf Name */}
+                                <h2>{shelf.bookshelfName}</h2>
+                                <div className="results-grid">
+                                    {bookResults[shelf.bookshelfName]?.length === 0 ? (
+                                        <p>No books found on this bookshelf.</p>
+                                    ) : 
+                                    (
+                                        bookResults[shelf.bookshelfName]?.map((result,index) => {
+                                            return <BookCard key={index} book={result[0]} source={{shelfName: shelf.bookshelfName }}
+                                            onRemove={(isbn) => handleRemoveBook(isbn, shelf.bookshelfName)} // Pass callback
+                                            />
+                                        })
+                                    )} 
+                                </div>
+                            </div>))
+                        )
+                    }
+                </div>
+            )}
         </>
     );
 };

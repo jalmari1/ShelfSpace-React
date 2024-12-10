@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import MyBookshelf from './components/MyBookshelf';
 import BookCard from './components/BookCard';
 import Banner from './components/Banner';
+import Loader from './components/Loader'
 import ForgotPassword from './components/ForgotPassword';
 
 function App() {
@@ -110,14 +111,19 @@ function App() {
                   <Banner />
                 </div>
                 <div className="results-grid">
-                  {Object.keys(bestSellingBooks).map((firstIsbn) => {
-                    const books = bestSellingBooks[firstIsbn];
-                    return books
-                      .filter((result) => result.author_name !== 'TBD' && result.title !== 'Untitled')
-                      .map((result, index) => {
-                        return <BookCard key={index} book={result} />;
-                      });
-                  })}
+                  {/* <Loader/> */}
+                {loading ? (
+                  <Loader />
+                ): (
+                  Object.keys(bestSellingBooks).map((firstIsbn) => {
+                      const books = bestSellingBooks[firstIsbn];
+                      return books
+                        .filter((result) => result.author_name !== 'TBD' && result.title !== 'Untitled')
+                        .map((result, index) => {
+                          return <BookCard key={index} book={result} />;
+                        });
+                    })
+                )}
                 </div>
               </div>
             }
