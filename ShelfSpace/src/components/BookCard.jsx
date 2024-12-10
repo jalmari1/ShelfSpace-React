@@ -9,7 +9,7 @@ const BookCard = ({book, source = undefined, onRemove}) => {
     : "../../default book cover image.jpg";
     const token = localStorage.getItem('authToken'); // Retrieve token from storage
 
-    console.log("Source prop:", source);
+    // console.log("Source prop:", source);
 
     // Destructure source if it's provided
  //   const user = source?.user;

@@ -44,7 +44,7 @@ export default function CreateBookshelfModal({open, onClose, onBookshelfCreated}
 
   return (
     <>
-        <div className={styles.overlay}/>
+        <div className={styles.overlay} onClick={onClose}/>
         <div className={styles.modal}>
             <h3 className={styles.title}>Create New Bookshelf</h3>
             <div className={styles.formGroup}>

@@ -12,6 +12,7 @@ const MyBookshelf = () => {
     const [error, setError] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [bookResults, setBookResults] = useState({});
+    const [shouldFetchBooks, setShouldFetchBooks] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
   
@@ -26,6 +27,7 @@ const MyBookshelf = () => {
     let searchQuery = `${import.meta.env.VITE_BE_URL + getAllBookshelvesUrl}`;
    
     const fetchBookshelves = async () => {
+        setLoading(true);
         try{
             const response = await axios.get(searchQuery, {
                 headers: {
@@ -36,6 +38,7 @@ const MyBookshelf = () => {
                 setError(response.data.error);
             } else {
                 setBookshelves(response.data);
+                setShouldFetchBooks(true);
             }
         } catch (err) {
             console.log("Error", err.message);
@@ -69,11 +72,10 @@ const MyBookshelf = () => {
                 }
             };
             updatedBookResults[shelf.bookshelfName] = books;
-            // console.log(books);
         }
         setBookResults(updatedBookResults);
-        console.log(updatedBookResults);
         setLoadingBooks(false);
+        setShouldFetchBooks(false);
     };
 
 
@@ -85,12 +87,17 @@ const MyBookshelf = () => {
     };
 
     useEffect(() => {
-        fetchBookshelves();
+        if(!isOpen){
+            fetchBookshelves();
+        }
     },[isOpen]);
 
     useEffect(() => {
-        handleFetchBooks();
-    },[bookshelves])
+        if(shouldFetchBooks){
+            console.log("Fetch Books")
+            handleFetchBooks();
+        }
+    },[bookshelves]);
     if (loading) return <Loader />;
     if (loadingBooks) return < Loader/>;
     if (error) return <p>{error}</p>;
