@@ -59,6 +59,9 @@ const Login = ({ setIsLoggedIn }) => { // Accept setIsLoggedIn as a prop
             required
           />
           <br />
+          <p style={{ fontSize: "14px", marginTop: "10px" }}>
+           Forgot your password? <b onClick={() => navigate("/forgot-password")} style={{ color: "blue", cursor: "pointer" }}>Reset it here</b>
+         </p>
          <p style={{ fontSize: "14  px", marginTop: "10px" }}>Dont have an account? <b><a onClick={() => navigate("/SignUp")}>SignUp</a></b> instead
           </p>
          
