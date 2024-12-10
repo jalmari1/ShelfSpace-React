@@ -11,8 +11,8 @@ import SignUp from './components/SignUp';
 import MyBookshelf from './components/MyBookshelf';
 import BookCard from './components/BookCard';
 import Banner from './components/Banner';
-import Loader from './components/Loader'
-import ForgotPassword from './components/ForgotPassword';
+import Loader from './components/Loader';
+
 
 function App() {
   const [searchCategory, setSearchCategory] = useState('isbn');
@@ -132,7 +132,7 @@ function App() {
           <Route path="/details" element={<BookDetails />} />
           <Route path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          
           <Route
             path="/bookshelf"
             element={<MyBookshelf results={results} setResults={setResults} loading={loading} />}
