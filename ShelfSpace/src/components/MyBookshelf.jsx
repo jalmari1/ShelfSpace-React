@@ -37,7 +37,6 @@ const MyBookshelf = () => {
             if (response.data.error) {
                 setError(response.data.error);
             } else {
-                console.log(response.data);
                 setBookshelves(response.data);
                 setShouldFetchBooks(true);
             }
@@ -95,7 +94,6 @@ const MyBookshelf = () => {
 
     useEffect(() => {
         if(shouldFetchBooks){
-            console.log("Fetch Books")
             handleFetchBooks();
         }
     },[bookshelves]);
