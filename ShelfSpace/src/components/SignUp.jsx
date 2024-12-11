@@ -25,9 +25,9 @@ const SignUp = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page reload
-
+    const registerUrl = `${import.meta.env.VITE_BE_URL}`+"/register";
     try {
-      const response = await axios.post("http://localhost:3000/register", formData);
+      const response = await axios.post(registerUrl, formData);
       setMessage(response.data.message); // Display success message
     } catch (error) {
       const errorMsg =
