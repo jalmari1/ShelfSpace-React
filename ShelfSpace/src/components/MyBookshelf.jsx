@@ -37,6 +37,7 @@ const MyBookshelf = () => {
             if (response.data.error) {
                 setError(response.data.error);
             } else {
+                console.log(response.data);
                 setBookshelves(response.data);
                 setShouldFetchBooks(true);
             }
@@ -98,9 +99,11 @@ const MyBookshelf = () => {
             handleFetchBooks();
         }
     },[bookshelves]);
-    if (loading) return <Loader />;
-    if (loadingBooks) return < Loader/>;
-    if (error) return <p>{error}</p>;
+    if (loading || loadingBooks) return (
+        <div className='results-grid'>
+            <Loader />
+        </div>
+    )
 
     return (
         <>
@@ -114,7 +117,9 @@ const MyBookshelf = () => {
                 ): (
                     <div className="bookshelf-section">
                     {bookshelves.length === 0 ? (
-                    <p>No bookshelves found. Add one to get started!</p>
+                        <div className='results-grid'>
+                            <p>No bookshelves found. Add one to get started!</p>
+                        </div>
                     ) : 
                     (
                         bookshelves.bookshelf.map((shelf, index) => (
