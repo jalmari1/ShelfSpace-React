@@ -48,7 +48,6 @@ const SearchBar = ({searchCategory, setSearchCategory, searchValue, setSearchVal
                 <option value="isbn">ISBN</option>
                 <option value="title">Title</option>
                 <option value="author">Author</option>
-                <option value="category">Category</option>
             </select>
             <button onClick={handleSearch}>Search</button>
         </div>
