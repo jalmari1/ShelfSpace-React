@@ -19,7 +19,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
   };
   return (
     <header className='banner'>
-      <div className='logo'>Library Connect</div>
+      <div className='logo'><img src="../../public/ShelfSpaceLogo-S.png" alt="ShelfSpace Logo" /></div>
       <div className='auth-buttons'>
         {isLoggedIn ? (
           <>
