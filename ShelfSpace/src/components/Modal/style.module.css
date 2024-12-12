@@ -1,68 +1,123 @@
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFF;
-    padding: 10px;
-    z-index: 1010;
-    border-radius: 15px;
-
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  padding: 20px; /* Increased padding for better spacing */
+  z-index: 1010;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Added shadow for better visibility */
+  width: 90%; /* Make modal responsive for smaller screens */
+  max-width: 400px; /* Limit modal width on larger screens */
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.2);
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Darkened overlay for better contrast */
+  z-index: 1000;
 }
 
-title {
-    text-align: center;
-    margin-bottom: 20px
-  }
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem; /* Added font size for better readability */
+  font-weight: bold;
+  color: #333;
+}
 
 .formGroup {
-    margin-bottom: 15px
-  }
+  margin-bottom: 15px;
+  text-align: left; /* Ensure label alignment in forms */
+}
 
 .label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
 
 .input {
-    width: 80%;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
+  width: 100%; /* Updated for full modal width */
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem; /* Ensure consistent font size */
+}
 
 .buttonGroup {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center-align buttons */
+  gap: 10px; /* Add space between buttons */
+  margin-top: 20px; /* Added spacing above buttons */
+}
+
+.createButton {
+  background-color: #4CAF50; /* Green background */
+  color: #fff;
+  width: 100%;
+  padding: 12px 25px; /* Adjusted padding for a larger button */
+  border: none;
+  border-radius: 8px; /* Rounded corners for a modern look */
+  cursor: pointer;
+  font-size: 1.1rem; /* Slightly larger font size */
+  font-weight: bold; /* Emphasized text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Smooth transitions */
+}
+
+.createButton:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.cancelButton {
+  background-color: #f44336; /* Red background for cancel */
+  color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px; /* Rounded corners for a modern look */
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.cancelButton:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+/* Center Create Bookshelf Button */
+.create-bookshelf-container {
     display: flex;
-    justify-content: space-between;
-  }
-  
-  .createButton {
-    /* background-color: #4CAF50; */
-    color: #fff;
-    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+button {
+    display: inline-block;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    font-size: 1rem;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .cancelButton {
-    /* background-color: #f44336; */
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #45a049; /* Slightly darker green */
+    transform: scale(1.05); /* Subtle scaling effect */
+}

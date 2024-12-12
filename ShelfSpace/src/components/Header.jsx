@@ -7,24 +7,20 @@ const Header = ({ isLoggedIn, onLogout }) => {
   const location = useLocation();
 
   const isAuthPage = location.pathname === '/login' || location.pathname === '/SignUp';
-  const token = localStorage.getItem('authToken'); 
-  if (token) {
-      isLoggedIn = true;
-  } else {
-    isLoggedIn = false;
-  }
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    navigate('/');
-  };
+
   return (
     <header className='banner'>
-      <div className='logo'><img src="../../public/ShelfSpaceLogo-S.png" alt="ShelfSpace Logo" /></div>
+      {/* Logo with navigation to home */}
+      <div className='logo' onClick={() => navigate('/')}>
+        <img src="/ShelfSpaceLogo-S.png" alt="ShelfSpace Logo" />
+      </div>
+      
+      {/* Auth buttons */}
       <div className='auth-buttons'>
         {isLoggedIn ? (
           <>
             <button onClick={() => navigate("/bookshelf")}>My Bookshelf</button>
-            <button onClick={handleLogout}>Sign Out</button>
+            <button onClick={onLogout}>Sign Out</button>
           </>
         ) : (
           <>

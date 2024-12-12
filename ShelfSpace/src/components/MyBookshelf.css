@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Soft background color */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Bookshelf Section */
+.bookshelf-section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 30px auto; /* Center the content */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Bookshelf Title */
+.bookshelf-section h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4CAF50; /* Theme color */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Create Bookshelf Button */
+button {
+    display: inline-block;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #45a049; /* Slightly darker green */
+    transform: scale(1.05); /* Subtle scaling effect */
+}
+
+/* Empty Bookshelves Notice */
+.results-grid p {
+    font-size: 1.1rem;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Bookshelf Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* BookCard Styling */
+.book-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Clean shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.book-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.book-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Loader Section */
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .bookshelf-section {
+        padding: 15px;
+    }
+
+    .bookshelf-section h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+
+    }
+}

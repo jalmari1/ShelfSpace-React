@@ -1,7 +1,8 @@
 import {React, useState, useEffect} from 'react';
 import axios, { all } from 'axios';
 import BookCard from './BookCard';
-import Loader from './Loader'
+import Loader from './Loader';
+import './MyBookshelf.css';
 import CreateBookshelfModal from './Modal/CreateBookshelfModal';
 import { useNavigate, useLocation } from "react-router-dom";
 
