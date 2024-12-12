@@ -21,7 +21,7 @@ const BookDetails = () => {
             setSummary("No summary available.");
             return;
         }
-        const getBookSummaryUrl = `http://openlibrary.org${bookInformation.key}.json`;
+        const getBookSummaryUrl = `https://openlibrary.org${bookInformation.key}.json`;
         try{
             const response = await axios.get(getBookSummaryUrl);
             const summary = response.data.description?.value || response.data.description || "No summary available.";
