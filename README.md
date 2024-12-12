@@ -26,7 +26,7 @@ ShelfSpace is a modern and interactive bookshelf management platform designed to
     cd ShelfSpace
  3. Install dependencies:
     ```bash
-    npm install
+    npm install axios dotenv styled-components
  4. Run the project:
     ```
     npm run dev
